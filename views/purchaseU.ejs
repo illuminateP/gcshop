@@ -1,0 +1,91 @@
+<div class="container">
+    <h2>구매 수정</h2>
+    <form action="/purchaseupdate_process" method="post">
+        <div class="mb-3">
+            <label class="form-label" for="id_customer">고객</label>
+            <select name="customer" id="id_customer" class="form-select">
+                <% var i=0; %>
+                    <% while (i < customers.length) { %>
+                        <% var selected=(customers[i].name===customername) ? 'selected' : '' ; %>
+                            <option value="<%= customers[i].loginid %>" <%=selected %>>
+                                <%= customers[i].name %>
+                            </option>
+                            <% i++; %>
+                                <% } %>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" for="id_product">상품</label>
+            <select name="product" id="id_product" class="form-select">
+                <% var i=0; %>
+                    <% while (i < products.length) { %>
+                        <% var selected=(products[i].name===productname) ? 'selected' : '' ; %>
+                            <option value="<%= products[i].mer_id %>" <%=selected %>>
+                                <%= products[i].name %>
+                            </option>
+                            <% i++; %>
+                                <% } %>
+            </select>
+        </div>
+        <div class="row mb-3">
+            <div class="col-6">
+                <label class="form-label" for="id">날짜</label>
+                <input class="form-control" type="text" name="date" value="<%- purchase[0].date %>" style="width:300px;"
+                    disabled />
+            </div>
+            <div class="col-6">
+                <label class="form-label" for="id_price">가격</label>
+                <input class="form-control" type="text" name="price" id="id_price" value="<%- purchase[0].price %>"
+                    readonly>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-6">
+                <label class="form-label" for="id_point">포인트</label>
+                <input class="form-control" type="text" name="point" id="id_point" value="<%- purchase[0].point %>">
+            </div>
+            <div class="col-6">
+                <label class="form-label" for="id_quantity">수량</label>
+                <input class="form-control" type="text" name="qty" id="id_quantity"
+                    value="<%- purchase[0].qty %>">
+            </div>
+        </div>
+        
+        <div class="mb-3">
+            <label class="form-label" for="id_total">총액</label>
+            <input class="form-control" type="text" name="total" id="id_total" value="<%- purchase[0].total %>">
+        </div>
+
+
+        <div class="mb-3">
+            <label class="form-label" for="id_payYN">지불 여부</label>
+            <select class="form-select" name="payYN" id="id_payYN">
+                <option value="Y" <%=purchase[0].payYN=='Y' ? 'selected' : '' %>>Y</option>
+                <option value="N" <%=purchase[0].payYN=='N' ? 'selected' : '' %>>N</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" for="id_cancel">취소 여부</label>
+            <select class="form-select" name="cancel" id="id_cancel">
+                <option value="Y" <%=purchase[0].cancel==='Y' ? 'selected' : '' %>>Y</option>
+                <option value="N" <%=purchase[0].cancel==='N' ? 'selected' : '' %>>N</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" for="id_refund">환불 여부</label>
+            <select class="form-select" name="refund" id="id_refund">
+                <option value="Y" <%=purchase[0].refund=='Y' ? 'selected' : '' %>>Y</option>
+                <option value="N" <%=purchase[0].refund=='N' ? 'selected' : '' %>>N</option>
+            </select>
+        </div>
+
+        <input type="hidden" name="purchaseId" value="<%- purchase[0].purchase_id %>">
+
+        <button class="btn btn-outline-primary btn-sm" type="submit">수정</button>
+        <a href="/purchaseview"><button class="btn btn-outline-primary btn-sm" type="button">구매 목록 돌아가기</button></a>
+    </form>
+</div>

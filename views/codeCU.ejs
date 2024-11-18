@@ -1,0 +1,65 @@
+<div class="container">
+
+	<% if (mode=='create' ) { %>
+		<h2>코드 입력</h2>
+		<form action="/code/create_process" method="post">
+			<div class="mb-3">
+				<label class="form-label" for="id">대분류</label>
+				<input class="form-control" type="text" name="main_id" style="width:300px;" />
+			</div>
+			<div class="mb-3">
+				<label class="form-label" for="id">대분류명</label>
+				<input class="form-control" type="text" name="main_name" style="width:300px;" />
+			</div>
+			<div class="mb-3">
+				<label class="form-label" for="id">소분류</label>
+				<input class="form-control" type="text" name="sub_id" style="width:300px;" />
+			</div>
+			<div class="mb-3">
+				<label class="form-label" for="id">소분류명</label>
+				<input class="form-control" type="text" name="sub_name" style="width:300px;" />
+			</div>
+			<div class="mb-3">
+				<label class="form-label" for="id">시작일</label>
+				<input class="form-control" type="text" name="start" id="start" style="width:300px;" />
+			</div>
+			<div class="mb-3">
+				<label class="form-label" for="id">종료일</label>
+				<input class="form-control" type="text" name="end" id="end" style="width:300px;" />
+			</div>
+			<button class="btn btn-outline-primary btn-sm" type="submit">입력</button>
+			<button class="btn btn-outline-primary btn-sm" type="button" onclick="location.href='/code/view'">코드 목록
+				돌아가기</button>
+			<% } else if (mode == 'update') { %>
+					<h2>코드 수정</h2>
+					<form action="/code/update_process" method="post">
+						<div class="mb-3">
+							<label class="form-label" for="id">대분류명</label>
+							<input class="form-control" type="text" name="main_name" style="width:300px;"
+								value="<%= result[0].main_name %>" />
+						</div>
+						<div class="mb-3">
+							<label class="form-label" for="id">소분류명</label>
+							<input class="form-control" type="text" name="sub_name" style="width:300px;"
+								value="<%= result[0].sub_name %>" />
+						</div>
+						<div class="mb-3">
+							<label class="form-label" for="id">시작일</label>
+							<input class="form-control" type="text" name="start" id="start" style="width:300px;"
+								value="<%= result[0].start %>" readonly />
+						</div>
+						<div class="mb-3">
+							<label class="form-label" for="id">종료일</label>
+							<input class="form-control" type="text" name="end" id="end" style="width:300px;"
+								value="<%= result[0].end %>" />
+						</div>
+						<input type='hidden' name='main_id' value="<%= result[0].main_id %>">
+						<input type='hidden' name='sub_id' value="<%= result[0].sub_id %>">
+
+						<button class="btn btn-outline-primary btn-sm" type="submit">수정</button>
+						<button class="btn btn-outline-primary btn-sm" type="button"
+							onclick="location.href='/code/view'">코드 목록 돌아가기</button>
+						<% } %>
+
+
+</div>

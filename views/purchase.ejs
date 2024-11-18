@@ -1,0 +1,44 @@
+<table class="table table-bordered " style="text-align: center;">
+    <thead class="table-primary ">
+        <th>상품</th>
+        <th>상품명</th>
+        <th>단가</th>
+        <th>구매량</th>
+        <th>총금액</th>
+        <th>구매일</th>
+        <th>취소여부</th>
+    </thead>
+
+
+    <% var i=0; while(i < product.length) { %>
+        <tr>
+            <td><a href="/detail/<%-product[i].mer_id%>" style="text-decoration: none;"><img src="<%=product[i].product_image %>" style="width:100px;height:100px; "></a></td>
+            <td>
+                <%= product[i].product_name%>
+            </td>
+            <td>
+                <%= product[i].product_price %>원
+            </td>
+            <td>
+                <%= product[i].qty %>
+            </td>
+            <td>
+                <%= product[i].total %>원
+            </td>
+            <td>
+                <%= product[i].date %>
+            </td>
+            <td>
+                <% if (product[i].cancel=='N' ) {%>
+                    <a href="/purchase/cancel/<%-product[i].purchase_id%>" style="text-decoration: none;">구매 취소 </a>
+                    <% } else {%>
+                        취소된 상품
+                        <% } %>
+            </td>
+        </tr>
+        <% i++; } %>
+</table>
+
+<% if (is_empty==true) { %>
+    <p>구매한 상품이 없으니 상품을 구매해 주십시오. </p>
+    <% } %>

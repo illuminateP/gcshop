@@ -1,0 +1,26 @@
+<table class="table table-bordered ">
+    <tr>
+        <td rowspan="6"><img src="<%-product[0].image%>" style="width:300px;height:300px; "></td>
+        <td><%-product[0].name%></td>
+    </tr>
+    <tr>
+        <td>가격 : <%-product[0].price%> 원</td>
+    </tr>
+    <tr>
+        <td>브랜드 : <%-product[0].brand%> </td>
+    </tr>
+    <tr>
+        <td>공급업체 : <%-product[0].supplier%> </td>
+    </tr>
+    <% if (login==true) { %>
+        <tr>
+            <td>
+                <a href="/purchase/detail/<%-product[0].mer_id%>"><button class="btn btn-outline-primary btn-sm" type="submit">구매</button></a>
+                <form action="/purchase/cartinsert" method="post" style="display : inline-block">
+                    <input type="hidden" value="<%-product[0].mer_id%>" name="mer_id">
+                    <button class="btn btn-outline-primary btn-sm" type="submit">장바구니</button>
+                </form>
+            </td>
+        </tr>
+        <% } %>
+</table>

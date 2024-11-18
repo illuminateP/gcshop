@@ -1,0 +1,44 @@
+<div class="container">
+    <h2>cart 테이블 수정</h2>
+    <form action="/cartupdate_process" method="post">
+        <div class="mb-3">
+            <label class="form-label" for="id_customer">고객</label>
+            <select name="customer" id="id_customer" class="form-select">
+                <% var i=0; %>
+                    <% while (i < customers.length) { %>
+                        <% var selected=(customers[i].name===customername) ? 'selected' : '' ; %>
+                            <option value="<%= customers[i].loginid %>" <%=selected %>>
+                                <%= customers[i].name %>
+                            </option>
+                            <% i++; %>
+                                <% } %>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" for="id_product">상품</label>
+            <select name="product" id="id_product" class="form-select">
+                <% var i=0; %>
+                    <% while (i < products.length) { %>
+                        <% var selected=(products[i].name===productname) ? 'selected' : '' ; %>
+                            <option value="<%= products[i].mer_id %>" <%=selected %>>
+                                <%= products[i].name %>
+                            </option>
+                            <% i++; %>
+                                <% } %>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="id">작성일</label>
+            <input class="form-control" type="text" name="date" value="<%- cart[0].date %>" style="width:300px;"
+                disabled />
+        </div>
+        <input type="hidden" name="cartId" value="<%- cart[0].cart_id %>">
+
+        <div class="mb-3">
+            <button class="btn btn-outline-primary btn-sm" type="submit">입력</button>
+            <a href="/cartview"><button class="btn btn-outline-primary btn-sm" type="button">장바구니 목록 돌아가기</button></a>
+        </div>
+    </form>
+
+</div>

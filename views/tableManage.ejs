@@ -1,0 +1,20 @@
+<table class="table table-bordered" style="text-align: center;">
+    <colgroup>
+        <col style="width: 30%;"> <!-- 첫 번째 열: 30% -->
+        <col style="width: 70%;"> <!-- 두 번째 열: 70% -->
+    </colgroup>
+
+    <thead class="table-primary ">
+        <th>테이블 명</th>
+        <th>테이블 설명</th>
+    </thead>
+    <% var i=0; while(i < tables.length) { %>
+        <tr>
+                <td><a href="/table/view/<%- tables[i].TABLE_NAME %>" style="text-decoration: none;"><%- tables[i].TABLE_NAME %></a></td>
+                <td><%- tables[i].TABLE_COMMENT  %></td>
+        </tr>
+        <% i++; }%>
+</table>
+<% if (is_empty==true) { %>
+    <p>테이블이 없습니다 !</p>
+    <% } %>

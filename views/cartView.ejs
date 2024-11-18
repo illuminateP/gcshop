@@ -1,0 +1,38 @@
+<table class="table table-bordered border-primary table-hover" style="text-align: center;">
+  <thead class="table-primary ">
+    <th>loginid</th>
+    <th>고객명</th>
+    <th>상품id</th>
+    <th>상품명</th>
+    <th>일자</th>
+    <th colspan="2"></th>
+  </thead>
+  
+  <% var i=0; while(i < carts.length) { %>
+    <tr>
+      <td>
+        <%= carts[i].loginid %>
+      </td>
+      <td>
+        <%= carts[i].customer_name %>
+      </td>
+      <td>
+        <%= carts[i].mer_id %>
+      </td>
+      <td>
+        <%= carts[i].product_name %>
+      </td>
+      <td>
+        <%= carts[i].date %>
+      </td>
+      <td><a href="/cartupdate/<%=carts[i].cart_id%>" style="text-decoration: none;">수정</a></td>
+      <td><a href="/cartdelete/<%=carts[i].cart_id%>" onclick='if(confirm("정말로 삭제하시겠습니까?")==false){return false}'
+          style="text-decoration: none;">삭제</a>
+      </td>
+    </tr>
+    <% i++; } %>
+</table>
+
+<% if (is_empty==true) { %>
+  <p>장바구니가 비어 있습니다!</p>
+  <% } %>

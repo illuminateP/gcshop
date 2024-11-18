@@ -1,0 +1,73 @@
+<% if (mode=='view' ) {%>
+    <table class="table table-bordered " style="text-align: center;">
+        <thead class="table-primary ">
+            <th>상품</th>
+            <th>상품명</th>
+            <th>가격</th>
+            <th>브랜드</th>
+
+        </thead>
+
+
+        <% var i=0; while(i < products.length) { %>
+            <tr>
+                <td><a href="/detail/<%-products[i].mer_id%>" style="text-decoration: none;"><img src="<%=products[i].image %>"
+                            style="width:100px;height:100px; "></a></td>
+                <td>
+                    <%= products[i].name%>
+                </td>
+                <td>
+                    <%= products[i].price %>
+                </td>
+                <td>
+                    <%= products[i].brand %>
+                </td>
+            </tr>
+            <% i++; } %>
+    </table>
+
+    <% if (is_empty==true) { %>
+        <p>자료가 없으니 상품 추가 버튼으로 상품을 추가해 주십시오. </p>
+        <% } %>
+            <% } else if (mode=='modify' ) {%>
+                <table class="table table-bordered " style="text-align: center;">
+                    <thead class="table-primary ">
+                        <th>상품</th>
+                        <th>상품명</th>
+                        <th>가격</th>
+                        <th>브랜드</th>
+
+
+                        <th colspan="2"></th>
+
+                    </thead>
+
+
+                    <% var i=0; while(i < products.length) { %>
+                        <tr>
+                            <td><a href="#" style="text-decoration: none;"><img src="<%=products[i].image %>"
+                                        style="width:100px;height:100px; "></a></td>
+                            <td>
+                                <%= products[i].name%>
+                            </td>
+                            <td>
+                                <%= products[i].price %>
+                            </td>
+                            <td>
+                                <%= products[i].brand %>
+                            </td>
+                            <td><a href="/product/update/<%= products[i].mer_id%>" style="text-decoration: none;">수정</a>
+                            </td>
+                            <td><a href="/product/delete/<%= products[i].mer_id%>" style="text-decoration: none;"
+                                    onclick="if(confirm('정말로 삭제하시겠습니까?')==false ) return false">삭제</a></td>
+
+                        </tr>
+                        <% i++; } %>
+                </table>
+
+                <% if (is_empty==true) { %>
+                    <p>자료가 없으니 상품 추가 버튼으로 상품을 추가해 주십시오. </p>
+                    <% } %>
+                        <a href="/product/create"><button class="btn btn-outline-secondary btn-sm" type="submit">상품
+                                추가</button></a>
+                        <% } %>

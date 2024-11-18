@@ -1,0 +1,24 @@
+<table class="table table-bordered" style="text-align: center; background-color: white;">
+
+    <thead>
+        <% var i=0; while(i < tableColumns.length) { %>
+            <th><%- tableColumns[i].COLUMN_COMMENT || tableColumns[i].COLUMN_NAME %></th>
+            <% i++; }%>
+                <th colspan="3"></th>
+    </thead>
+    <% var i=0; while(i < tableRows.length) { %>
+        <tr>
+            <% var rowKeys=Object.keys(tableRows[i]); %>
+                <% var j=0; while (j < rowKeys.length) { %>
+                    <td><%- tableRows[i][rowKeys[j]] %></td>
+                    <% j++; } %>
+
+        <td><a href="#" style="text-decoration: none;">생성</a></td>
+        <td><a href="#" style="text-decoration: none;">수정</a></td>
+        <td><a href="#" style="text-decoration: none;">삭제</a></td>
+        <% i++; }%>
+    </tr>
+</table>
+<% if (is_empty==true) { %>
+    <p>테이블이 없습니다 !</p>
+    <% } %>

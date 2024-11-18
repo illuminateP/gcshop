@@ -1,0 +1,45 @@
+<table class="table table-bordered " style="text-align: center;">
+    <thead class="table-primary ">
+        <th>구매선택</th>
+        <th>상품</th>
+        <th>상품명</th>
+        <th>단가</th>
+        <th>담은날</th>
+        <th>수량</th>
+    </thead>
+
+    <form method="post">
+        <% var i=0; while(i < product.length) { %>
+            <tr>
+                <td>
+                    <input type="checkbox" name="selectedItems" value="<%= product[i].mer_id %>">
+                </td>
+                <td><a href="/detail/<%-product[i].mer_id%>" style="text-decoration: none;"><img src="<%=product[i].product_image %>" style="width:100px;height:100px; "></a></td>
+                <td>
+                    <%= product[i].product_name%>
+                </td>
+                <td>
+                    <%= product[i].product_price %>원
+                </td>
+                <td>
+                    <%= product[i].date %>
+                </td>
+                <td>
+                    <input type="number" name="qty_<%=product[i].mer_id %>" value = 1 style="width: 60px;" >
+                    <input type="hidden" name="pri_<%=product[i].mer_id %>" value ="<%= product[i].product_price %>">
+                </td>
+            </tr>
+            <% i++; } %>
+
+</table>
+<% if (is_empty==true) { %>
+    <p>장바구니에 담은 상품이 없으니 장바구니에 상품을 담아 주십시오. </p>
+    <% } %>
+    
+<div style="text-align: right">
+    <button class="btn btn-outline-primary btn-sm" formaction="/purchase/cartbuy" type="submit">결재</button>
+    <button class="btn btn-outline-primary btn-sm" formaction="/purchase/cartdelete" type="submit" onclick="if(confirm('정말로 삭제하시겠습니까?')==false) return false">삭제</button>
+    <button class="btn btn-outline-primary btn-sm" type="button" onclick="location.href='/'">상품 목록 돌아가기</button>
+</div>
+</form>
+
