@@ -1,7 +1,7 @@
 # GCshop
 
 ## Overview
-Nodejs와 mysql, html, ejs를 사용한 동적 웹 페이지(온라인 쇼핑몰)을 생성하는 템플릿
+Nodejs와 mysql, html, ejs를 사용한 동적 웹 페이지(온라인 쇼핑몰)을 구현하는 프로젝트
 
 ## Tech Stack
 - **Language:** Node.js 16.X
